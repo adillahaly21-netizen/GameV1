@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102b66">
+<title>Petualangan Si Campuran</title>
+<style>
+:root{--navy:#102b66;--blue:#2563eb;--cyan:#67e8f9;--gold:#facc15;--paper:#f7fbff;--ink:#14213d;--green:#16a34a}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#b9efff,#f5fbff 55%,#d9f7df);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
+button,input{font:inherit}button{cursor:pointer;border:0;border-radius:13px;padding:10px 15px;font-weight:800;color:white;background:linear-gradient(135deg,#2563eb,#4f46e5);box-shadow:0 4px 0 #1e3a8a;transition:transform .08s}button:active{transform:translateY(3px);box-shadow:0 1px 0 #1e3a8a}button.secondary{background:linear-gradient(135deg,#0f766e,#16a34a);box-shadow:0 4px 0 #065f46}button.light{background:#eaf3ff;color:#17316d;box-shadow:0 4px 0 #a8c4f5}button.danger{background:#e11d48;box-shadow:0 4px 0 #9f1239}
+header{max-width:1100px;margin:auto;padding:16px 16px 8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:10px}.logo{font-size:2.4rem;filter:drop-shadow(0 3px 0 #facc15)}h1{font-size:clamp(1.4rem,4vw,2.3rem);line-height:1;margin:0;color:#102b66;text-shadow:1px 2px white}.subtitle{margin:5px 0 0;font-weight:700;color:#236079}.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+main{max-width:1100px;margin:auto;padding:8px 16px 30px}.panel{background:#ffffffed;border:2px solid #c7e7ff;border-radius:20px;padding:16px;box-shadow:0 8px 20px #1e477b12;margin-bottom:14px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.hero h2{margin:0 0 8px;color:#123579}.hero p{line-height:1.5;margin:6px 0 14px}.pill{display:inline-block;border-radius:999px;padding:5px 10px;background:#e0f2fe;color:#075985;font-weight:800;font-size:.82rem;margin:2px}.hero-art{background:linear-gradient(135deg,#0c4a6e,#2563eb 55%,#7c3aed);border-radius:16px;min-height:170px;display:grid;place-items:center;color:white;text-align:center;padding:20px;overflow:hidden}.hero-art .emoji{font-size:3.8rem}.hero-art strong{font-size:1.3rem}.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:14px}.stat{background:#fff;border:2px solid #dbeafe;border-radius:15px;padding:10px;text-align:center}.stat span{display:block;font-size:.78rem;color:#53647e;font-weight:700}.stat b{font-size:1.3rem;color:#123579}
+.game-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,.7fr);gap:14px}.game-panel{padding:10px}.canvas-wrap{position:relative}.canvas-wrap canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:14px;background:#9ee7ff;border:2px solid #b6e3ff;touch-action:none}.canvas-hud{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:9px 3px 3px;font-weight:800;color:#17316d}.controls{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:8px}.controls button{min-width:56px;font-size:1.15rem}.small{font-size:.88rem;color:#51617a;line-height:1.45}.side h3,.panel h3{margin:0 0 9px;color:#123579}.mission{padding:10px;border-radius:12px;background:#f0f9ff;margin:7px 0;border-left:4px solid #38bdf8}.mission b{display:block;margin-bottom:3px}.progress{height:10px;border-radius:99px;background:#dbeafe;overflow:hidden}.progress div{height:100%;background:linear-gradient(90deg,#22c55e,#84cc16);width:0;transition:width .25s}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.actions button{flex:1}.section-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ranklist{width:100%;border-collapse:collapse}.ranklist td,.ranklist th{text-align:left;padding:8px;border-bottom:1px solid #e2e8f0}.ranklist th{color:#31517c;background:#f0f7ff}.ranklist tr:first-child td{font-weight:800}.muted{color:#64748b}.overlay{position:fixed;inset:0;background:#07152ed9;display:none;align-items:center;justify-content:center;padding:15px;z-index:5}.overlay.show{display:flex}.modal{width:min(570px,100%);background:white;border-radius:22px;padding:20px;max-height:90vh;overflow:auto;box-shadow:0 20px 80px #0005}.modal h2{margin-top:0;color:#173579}.answers{display:grid;gap:9px;margin:14px 0}.answers button{background:#eff6ff;color:#17316d;box-shadow:0 3px 0 #bfd5fa;text-align:left}.answers button:hover{background:#dbeafe}.feedback{padding:10px;border-radius:12px;background:#f0fdf4;color:#166534;font-weight:700}.field{width:100%;padding:10px 12px;border:2px solid #cbd5e1;border-radius:12px;margin:5px 0 12px}.hidden{display:none!important}footer{text-align:center;padding:8px 16px 26px;color:#36516d;font-size:.85rem}
+@media(max-width:780px){.hero,.game-layout,.section-grid{grid-template-columns:1fr}.statrow{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start}.hero-art{min-height:130px}.panel{padding:13px}.top-actions button{padding:8px 10px;font-size:.84rem}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="logo">🧪</div><div><h1>Petualangan Si Campuran</h1><div class="subtitle">Lompat, jawab, kumpulkan ilmu!</div></div></div>
+ <div class="top-actions"><button class="light" id="soundBtn">🔊 Suara: ON</button><button class="light" id="reportBtn">📊 Laporan</button><button class="light" id="rankBtn">🏆 Peringkat</button></div>
+</header>
+<main>
+ <section class="hero panel">
+  <div><h2>Siap jadi penjelajah ilmu?</h2><p>Jelajahi dunia sains, hindari rintangan, kumpulkan kristal, dan jawab kuis dari berbagai mata pelajaran SMA. Game ini dapat dimainkan bersama bergantian di satu perangkat.</p>
+   <span class="pill">🎮 Platformer</span><span class="pill">📚 Materi campuran</span><span class="pill">📴 Bisa offline</span>
+   <div class="actions"><button id="startBtn">▶ Mulai / Lanjutkan</button><button class="secondary" id="nameBtn">👥 Ganti pemain</button></div>
+  </div>
+  <div class="hero-art"><div><div class="emoji">🧑‍🚀 🏃‍♀️ 💎</div><strong>10 level tantangan</strong><div>Belajar sambil bermain!</div></div></div>
+ </section>
+ <div class="statrow">
+  <div class="stat"><span>SKOR</span><b id="score">0</b></div><div class="stat"><span>LEVEL</span><b id="level">1 / 10</b></div><div class="stat"><span>KRISTAL</span><b id="coins">0</b></div><div class="stat"><span>NYAWA</span><b id="lives">❤️❤️❤️</b></div>
+ </div>
+ <div class="game-layout">
+  <section class="panel game-panel">
+   <div class="canvas-wrap"><canvas id="game" width="960" height="540" aria-label="Area permainan platformer"></canvas></div>
+   <div class="canvas-hud"><span id="status">Tekan Mulai untuk bermain.</span><span id="qcount">Kuis: 0 benar</span></div>
+   <div class="controls"><button class="light" id="leftBtn" aria-label="Ke kiri">⬅</button><button class="light" id="jumpBtn" aria-label="Lompat">⬆ LOMPAT</button><button class="light" id="rightBtn" aria-label="Ke kanan">➡</button></div>
+   <p class="small">Komputer: tombol ← → untuk bergerak, Spasi/↑ untuk lompat. HP: gunakan tombol di bawah permainan. Sentuh kristal untuk menambah skor dan kotak tanda tanya untuk membuka kuis.</p>
+  </section>
+  <aside class="panel side">
+   <h3>🗺️ Misi saat ini</h3>
+   <div class="mission"><b id="missionTitle">Level 1 — Gerbang Pengetahuan</b><span id="missionText" class="small">Kumpulkan kristal dan temukan kotak kuis.</span></div>
+   <div class="small">Progres level</div><div class="progress"><div id="progressBar"></div></div>
+   <div class="mission"><b>🎯 Cara mendapat poin</b><div class="small">💎 Kristal: +25 poin<br>✅ Jawaban benar: +100 poin<br>🏁 Selesaikan level: +250 poin<br>❤️ Nyawa bonus: +20 poin</div></div>
+   <div class="mission"><b>📚 Materi campuran</b><div class="small">Matematika, Bahasa Indonesia, Bahasa Inggris, Biologi, Fisika, Kimia, Sejarah, Geografi, Ekonomi, dan PAI.</div></div>
+   <div class="actions"><button class="secondary" id="quizBtn">❓ Latihan kuis</button><button class="light" id="resetBtn">↻ Ulangi level</button></div>
+  </aside>
+ </div>
+ <div class="section-grid">
+  <section class="panel"><h3>🏆 Papan peringkat perangkat ini</h3><div id="leaderboard"></div><p class="small">Peringkat disimpan di browser/perangkat ini. Belum tersambung antarperangkat atau antarpemain melalui internet.</p></section>
+  <section class="panel"><h3>📈 Laporan hasil belajar</h3><div id="reportSummary" class="small">Mulai bermain untuk merekam hasil belajar.</div><div class="actions"><button id="downloadBtn" class="secondary">⬇ Unduh laporan CSV</button><button id="clearDataBtn" class="danger">Hapus data lokal</button></div></section>
+ </div>
+</main>
+<footer>Petualangan Si Campuran · Demo belajar mandiri · Data disimpan secara lokal di browser.</footer>
+
+<div class="overlay" id="modalOverlay"><div class="modal" id="modal"></div></div>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const canvas=$('game'),ctx=canvas.getContext('2d');
+const LEVELS=[
+ {name:'Gerbang Pengetahuan',theme:'#8be0ff',ground:'#7c4a2d'},
+ {name:'Hutan Logika',theme:'#b6f4bd',ground:'#6b4a2c'},
+ {name:'Lembah Bahasa',theme:'#ffd9a3',ground:'#9a5735'},
+ {name:'Kota Angka',theme:'#c9d6ff',ground:'#594a88'},
+ {name:'Laut Kehidupan',theme:'#83e8ee',ground:'#72523e'},
+ {name:'Gunung Energi',theme:'#ffd1b8',ground:'#70524a'},
+ {name:'Kuil Sejarah',theme:'#ffeaa7',ground:'#85613d'},
+ {name:'Pulau Bumi',theme:'#a7f3d0',ground:'#795239'},
+ {name:'Galaksi Ekonomi',theme:'#d9c2ff',ground:'#51417a'},
+ {name:'Puncak Ilmu',theme:'#c7f9cc',ground:'#5c4634'}
+];
+const QUESTIONS=[
+{cat:'Matematika',q:'Jika 3x + 5 = 20, berapakah nilai x?',a:['3','5','7','8'],c:1,why:'3x = 15, sehingga x = 5.'},
+{cat:'Bahasa Indonesia',q:'Kalimat yang memuat gagasan utama paragraf biasanya disebut ...',a:['Kalimat utama','Kalimat tanya','Kalimat seru','Kalimat perintah'],c:0,why:'Kalimat utama memuat inti pembahasan paragraf.'},
+{cat:'Bahasa Inggris',q:'Choose the correct sentence.',a:['She go to school every day.','She goes to school every day.','She going school every day.','She gone to school every day.'],c:1,why:'Subjek she memakai kata kerja goes pada simple present.'},
+{cat:'Biologi',q:'Organel sel yang terutama menghasilkan energi ATP adalah ...',a:['Ribosom','Lisosom','Mitokondria','Badan Golgi'],c:2,why:'Mitokondria menjadi tempat utama respirasi sel aerob.'},
+{cat:'Fisika',q:'Satuan SI untuk gaya adalah ...',a:['Joule','Watt','Pascal','Newton'],c:3,why:'Gaya diukur dalam newton (N).'},
+{cat:'Kimia',q:'Air murni (H₂O) termasuk ...',a:['Unsur','Senyawa','Campuran heterogen','Koloid'],c:1,why:'Air tersusun dari hidrogen dan oksigen yang berikatan kimia.'},
+{cat:'Sejarah',q:'Proklamasi kemerdekaan Indonesia dibacakan pada tanggal ...',a:['1 Juni 1945','17 Agustus 1945','10 November 1945','20 Mei 1908'],c:1,why:'Proklamasi dibacakan pada 17 Agustus 1945.'},
+{cat:'Geografi',q:'Garis khayal yang membagi bumi menjadi belahan utara dan selatan adalah ...',a:['Meridian utama','Garis balik utara','Khatulistiwa','Garis tanggal'],c:2,why:'Khatulistiwa berada pada lintang 0°.'},
+{cat:'Ekonomi',q:'Ketika harga barang naik, jumlah yang diminta cenderung turun, dengan faktor lain tetap. Ini disebut ...',a:['Hukum permintaan','Hukum penawaran','Inflasi inti','Biaya peluang'],c:0,why:'Hukum permintaan menjelaskan hubungan terbalik harga dan jumlah diminta.'},
+{cat:'PAI',q:'Sikap dapat dipercaya dan menjaga titipan disebut ...',a:['Takabur','Amanah','Hasad','Israf'],c:1,why:'Amanah berarti dapat dipercaya dan menunaikan tanggung jawab.'},
+{cat:'Matematika',q:'Luas persegi dengan sisi 7 cm adalah ...',a:['14 cm²','28 cm²','49 cm²','56 cm²'],c:2,why:'Luas persegi = sisi × sisi = 7 × 7 = 49 cm².'},
+{cat:'Biologi',q:'Proses tumbuhan membuat makanan dengan bantuan cahaya disebut ...',a:['Fermentasi','Fotosintesis','Transpirasi','Ekskresi'],c:1,why:'Fotosintesis menggunakan energi cahaya untuk membentuk senyawa organik.'},
+{cat:'Fisika',q:'Benda menempuh 100 meter dalam 20 sekon. Kelajuan rata-ratanya ...',a:['2 m/s','4 m/s','5 m/s','10 m/s'],c:2,why:'Kelajuan = jarak/waktu = 100/20 = 5 m/s.'},
+{cat:'Bahasa Indonesia',q:'Lawan kata “optimistis” yang paling tepat adalah ...',a:['Pesimistis','Realistis','Aktif','Kreatif'],c:0,why:'Pesimistis berarti cenderung melihat sisi buruk atau tidak berharap baik.'},
+{cat:'Kimia',q:'Metode yang tepat untuk memisahkan pasir dari air adalah ...',a:['Distilasi','Filtrasi','Kromatografi','Sublimasi'],c:1,why:'Filtrasi menyaring padatan tak larut dari cairan.'},
+{cat:'Geografi',q:'Perubahan uap air menjadi titik-titik air disebut ...',a:['Evaporasi','Kondensasi','Infiltrasi','Presipitasi'],c:1,why:'Kondensasi adalah perubahan wujud gas menjadi cair.'},
+{cat:'Ekonomi',q:'Kebutuhan yang harus dipenuhi untuk mempertahankan hidup termasuk kebutuhan ...',a:['Tersier','Sekunder','Primer','Prestise'],c:2,why:'Kebutuhan primer meliputi kebutuhan pokok seperti pangan, sandang, dan papan.'},
+{cat:'PAI',q:'Perilaku menghormati perbedaan dan hidup rukun disebut ...',a:['Toleransi','Riya','Ghibah','Dendam'],c:0,why:'Toleransi berarti menghargai perbedaan tanpa menghilangkan keyakinan sendiri.'},
+{cat:'Bahasa Inggris',q:'The past form of “write” is ...',a:['Writed','Wrote','Writtened','Writing'],c:1,why:'Bentuk simple past dari write adalah wrote.'},
+{cat:'Sejarah',q:'Organisasi yang berdiri pada 20 Mei 1908 dan menjadi tonggak Kebangkitan Nasional adalah ...',a:['Budi Utomo','BPUPKI','PPKI','VOC'],c:0,why:'Budi Utomo didirikan pada 20 Mei 1908.'}
+];
+let state={name:'Pemain 1',score:0,level:1,coins:0,lives:3,correct:0,answered:0,played:0,started:false,muted:false,questionIndex:0,asked:[],sessionStart:new Date().toISOString(),lastSavedScore:0};
+let player={x:75,y:380,vx:0,vy:0,w:36,h:48,onGround:false,inv:0};
+let keys={left:false,right:false},platforms=[],gems=[],quizBoxes=[],enemies=[],frame=0,quizOpen=false,moveLoop=null;
+const STORE='petualanganCampuran_v1';
+function load(){try{let d=JSON.parse(localStorage.getItem(STORE)||'{}');if(d.state)state={...state,...d.state,started:false};renderBoard();renderReport()}catch(e){}}
+function save(){try{let old=JSON.parse(localStorage.getItem(STORE)||'{}');old.state={...state,started:false};old.runs=old.runs||[];localStorage.setItem(STORE,JSON.stringify(old));}catch(e){}}
+function saveRun(){try{let d=JSON.parse(localStorage.getItem(STORE)||'{}');d.runs=d.runs||[];d.runs.push({name:state.name,score:state.score,level:state.level,correct:state.correct,answered:state.answered,date:new Date().toLocaleString('id-ID')});d.runs=d.runs.slice(-80);d.state={...state,started:false};localStorage.setItem(STORE,JSON.stringify(d));}catch(e){}renderBoard();renderReport()}
+function tone(freq=500,dur=.08,type='sine'){if(state.muted)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const a=new AC(),o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.08,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+dur);o.onended=()=>a.close()}catch(e){}}
+function setupLevel(){let l=state.level-1;platforms=[{x:0,y:470,w:960,h:70}];for(let i=0;i<5;i++){platforms.push({x:140+i*170,y:390-(i%2)*48,w:115,h:20})}gems=[];for(let i=0;i<10;i++)gems.push({x:110+i*82,y:420-(i%3)*42,r:11,got:false});quizBoxes=[{x:475,y:315,w:36,h:36,used:false},{x:815,y:300,w:36,h:36,used:false}];enemies=[{x:350+((l*17)%100),y:438,w:34,h:30,dir:1,min:280,max:500},{x:690,y:438,w:34,h:30,dir:-1,min:610,max:830}];player={x:55,y:400,vx:0,vy:0,w:36,h:48,onGround:false,inv:0};$('missionTitle').textContent=`Level ${state.level} — ${LEVELS[l].name}`;$('missionText').textContent='Kumpulkan kristal, hindari slime, dan sentuh kotak ❓ untuk kuis.';$('progressBar').style.width='0%';draw()}
+function roundRect(c,x,y,w,h,r,fill,stroke){c.beginPath();c.roundRect(x,y,w,h,r);if(fill){c.fillStyle=fill;c.fill()}if(stroke){c.strokeStyle=stroke;c.stroke()}}
+function draw(){const l=LEVELS[state.level-1]||LEVELS[0];ctx.clearRect(0,0,960,540);let sky=ctx.createLinearGradient(0,0,0,540);sky.addColorStop(0,l.theme);sky.addColorStop(1,'#f2fbff');ctx.fillStyle=sky;ctx.fillRect(0,0,960,540);
+ // clouds and hills
+ ctx.fillStyle='#ffffffa8';for(let i=0;i<5;i++){let x=(i*210+frame*.15)%1080-60;ctx.beginPath();ctx.arc(x,75+(i%2)*38,25,0,Math.PI*2);ctx.arc(x+28,65+(i%2)*38,33,0,Math.PI*2);ctx.arc(x+60,78+(i%2)*38,23,0,Math.PI*2);ctx.fill()}
+ ctx.fillStyle='#7dd3a8';ctx.beginPath();ctx.moveTo(0,410);for(let x=0;x<=960;x+=80)ctx.lineTo(x,330+Math.sin(x*.013+frame*.003)*35);ctx.lineTo(960,540);ctx.lineTo(0,540);ctx.fill();
+ platforms.forEach(p=>{ctx.fillStyle=l.ground;ctx.fillRect(p.x,p.y,p.w,p.h);ctx.fillStyle='#65c85a';ctx.fillRect(p.x,p.y,p.w,8);ctx.fillStyle='#ffffff20';for(let x=p.x+12;x<p.x+p.w;x+=35)ctx.fillRect(x,p.y+20,13,4)});
+ gems.forEach(g=>{if(g.got)return;ctx.save();ctx.translate(g.x,g.y);ctx.rotate(frame*.03);ctx.fillStyle='#facc15';ctx.strokeStyle='#fff4a3';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,-g.r);ctx.lineTo(g.r*.8,0);ctx.lineTo(0,g.r);ctx.lineTo(-g.r*.8,0);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore()});
+ quizBoxes.forEach(b=>{roundRect(ctx,b.x,b.y,b.w,b.h,9,b.used?'#94a3b8':'#fb923c','#fff');ctx.fillStyle='white';ctx.font='bold 25px system-ui';ctx.textAlign='center';ctx.fillText(b.used?'✓':'?',b.x+b.w/2,b.y+27)});
+ enemies.forEach(e=>{ctx.fillStyle='#65c84f';ctx.beginPath();ctx.ellipse(e.x+e.w/2,e.y+e.h/2,e.w/2,e.h/2,0,Math.PI,0);ctx.lineTo(e.x+e.w,e.y+e.h);ctx.lineTo(e.x,e.y+e.h);ctx.fill();ctx.fillStyle='#153c38';ctx.beginPath();ctx.arc(e.x+11,e.y+14,3,0,Math.PI*2);ctx.arc(e.x+24,e.y+14,3,0,Math.PI*2);ctx.fill()});
+ // player
+ ctx.save();if(player.inv>0&&Math.floor(frame/5)%2===0)ctx.globalAlpha=.45;ctx.fillStyle='#2563eb';roundRect(ctx,player.x+5,player.y+18,27,29,8,'#2563eb');ctx.fillStyle='#f5c99b';ctx.beginPath();ctx.arc(player.x+18,player.y+12,14,0,Math.PI*2);ctx.fill();ctx.fillStyle='#172554';ctx.fillRect(player.x+4,player.y+2,28,8);ctx.fillStyle='#0f172a';ctx.fillRect(player.x+11,player.y+10,3,4);ctx.fillRect(player.x+22,player.y+10,3,4);ctx.fillStyle='#facc15';ctx.fillRect(player.x+7,player.y+44,9,4);ctx.fillRect(player.x+22,player.y+44,9,4);ctx.restore();
+ ctx.fillStyle='#123579';ctx.font='bold 20px system-ui';ctx.textAlign='left';ctx.fillText(`LEVEL ${state.level}`,22,34);ctx.fillText(`💎 ${state.coins}`,22,62);
+ if(!state.started){ctx.fillStyle='#0b1c38a8';ctx.fillRect(0,0,960,540);roundRect(ctx,190,175,580,165,22,'#ffffffed','#fff');ctx.fillStyle='#143879';ctx.textAlign='center';ctx.font='bold 34px system-ui';ctx.fillText('PETUALANGAN SI CAMPURAN',480,225);ctx.font='bold 20px system-ui';ctx.fillText('Tekan “Mulai / Lanjutkan” untuk bermain',480,270);ctx.font='17px system-ui';ctx.fillText('Gerak: ← →  |  Lompat: Spasi / ↑',480,305)}
+}
+function updateUI(){$('score').textContent=state.score;$('level').textContent=`${state.level} / 10`;$('coins').textContent=state.coins;$('lives').textContent='❤️'.repeat(Math.max(0,state.lives))+'🖤'.repeat(Math.max(0,3-state.lives));$('qcount').textContent=`Kuis: ${state.correct} benar / ${state.answered} dijawab`;save()}
+function start(){if(state.lives<=0){state.lives=3;state.score=0;state.level=1;state.coins=0;state.correct=0;state.answered=0;state.asked=[];setupLevel()}state.started=true;$('status').textContent='Petualangan berlangsung!';tone(660,.12);draw()}
+function physics(){if(!state.started||quizOpen){draw();return}frame++;if(keys.left)player.vx=-4.3;else if(keys.right)player.vx=4.3;else player.vx*=.78;player.x+=player.vx;player.x=Math.max(0,Math.min(960-player.w,player.x));player.vy+=.55;player.y+=player.vy;player.onGround=false;for(const p of platforms){if(player.x+player.w>p.x&&player.x<p.x+p.w&&player.y+player.h>=p.y&&player.y+player.h<=p.y+Math.max(20,player.vy+5)&&player.vy>=0){player.y=p.y-player.h;player.vy=0;player.onGround=true}}
+ if(player.y>560){hurt()}
+ if(player.inv>0)player.inv--;
+ gems.forEach(g=>{if(!g.got&&Math.hypot(player.x+player.w/2-g.x,player.y+player.h/2-g.y)<28){g.got=true;state.coins++;state.score+=25;tone(820,.07,'triangle');updateUI()}});
+ quizBoxes.forEach(b=>{if(!b.used&&player.x+player.w>b.x&&player.x<b.x+b.w&&player.y+player.h>b.y&&player.y<b.y+b.h){b.used=true;openQuiz()}});
+ enemies.forEach(e=>{e.x+=e.dir*1.2;if(e.x<e.min||e.x>e.max)e.dir*=-1;if(player.inv===0&&player.x+player.w>e.x&&player.x<e.x+e.w&&player.y+player.h>e.y+8&&player.y<e.y+e.h){hurt()}});
+ $('progressBar').style.width=Math.min(100,player.x/9.6)+'%';draw();requestAnimationFrame(physics)}
+function hurt(){if(player.inv>0)return;state.lives--;player.inv=90;player.vy=-7;player.x=Math.max(20,player.x-45);tone(170,.2,'sawtooth');updateUI();if(state.lives<=0){state.started=false;saveRun();showModal(`<h2>💫 Petualangan selesai</h2><p>Nyawa habis, <b>${escapeHTML(state.name)}</b>! Skor akhir: <b>${state.score}</b>.</p><button id="again">Coba lagi</button> <button class="light" id="closeModal">Tutup</button>`);$('again').onclick=()=>{closeModal();state.lives=3;state.score=0;state.level=1;state.coins=0;state.correct=0;state.answered=0;setupLevel();updateUI();start()};$('closeModal').onclick=closeModal}}
+function nextLevel(){state.score+=250+(state.lives*20);tone(880,.16);if(state.level>=10){state.started=false;saveRun();showModal(`<h2>🏆 Hebat! Kamu menaklukkan 10 level!</h2><p>Skor akhir <b>${state.score}</b>. Kuis benar: ${state.correct}/${state.answered}.</p><button id="again">Main lagi</button> <button class="light" id="closeModal">Tutup</button>`);$('again').onclick=()=>{closeModal();state.level=1;state.score=0;state.coins=0;state.lives=3;state.correct=0;state.answered=0;state.asked=[];setupLevel();updateUI();start()};$('closeModal').onclick=closeModal}else{state.level++;setupLevel();$('status').textContent=`Level ${state.level-1} selesai! Lanjutkan petualangan.`;updateUI();showModal(`<h2>🎉 Level selesai!</h2><p>Bonus level +250 poin${state.lives>0?' dan bonus nyawa':''}. Bersiap menuju <b>Level ${state.level}: ${LEVELS[state.level-1].name}</b>.</p><button id="continue">Lanjutkan</button>`);$('continue').onclick=()=>{closeModal();start()}}saveRun()}
+function openQuiz(){if(quizOpen)return;quizOpen=true;state.started=false;let available=QUESTIONS.map((q,i)=>i).filter(i=>!state.asked.includes(i));if(!available.length){state.asked=[];available=QUESTIONS.map((q,i)=>i)}let idx=available[Math.floor(Math.random()*available.length)];state.asked.push(idx);let q=QUESTIONS[idx];showModal(`<span class="pill">${q.cat}</span><h2>🧠 Tantangan Pengetahuan</h2><p>${q.q}</p><div class="answers">${q.a.map((a,i)=>`<button data-answer="${i}">${String.fromCharCode(65+i)}. ${escapeHTML(a)}</button>`).join('')}</div><p class="small">Jawaban benar mendapat +100 poin. Pilih satu jawaban.</p><button class="light" id="skipQuiz">Lewati kuis</button>`);document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{const n=Number(b.dataset.answer);state.answered++;if(n===q.c){state.correct++;state.score+=100;tone(750,.15);showModal(`<h2>✅ Tepat sekali!</h2><p>${escapeHTML(q.why)}</p><p><b>+100 poin</b></p><button id="quizContinue">Kembali bermain</button>`)}else{tone(210,.18,'triangle');showModal(`<h2>💡 Belum tepat</h2><p>Jawaban yang tepat: <b>${escapeHTML(q.a[q.c])}</b></p><p>${escapeHTML(q.why)}</p><button id="quizContinue">Kembali bermain</button>`)}$('quizContinue').onclick=()=>{closeModal();quizOpen=false;state.started=true;updateUI();requestAnimationFrame(physics)};updateUI();save()});$('skipQuiz').onclick=()=>{closeModal();quizOpen=false;state.started=true;requestAnimationFrame(physics)}}
+function showModal(html){$('modal').innerHTML=html;$('modalOverlay').classList.add('show')}
+function closeModal(){$('modalOverlay').classList.remove('show');quizOpen=false}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderBoard(){let d={};try{d=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}let runs=(d.runs||[]).slice().sort((a,b)=>b.score-a.score).slice(0,8);$('leaderboard').innerHTML=runs.length?`<table class="ranklist"><thead><tr><th>#</th><th>Pemain</th><th>Skor</th><th>Level</th></tr></thead><tbody>${runs.map((r,i)=>`<tr><td>${i+1}</td><td>${escapeHTML(r.name)}</td><td>${r.score}</td><td>${r.level}</td></tr>`).join('')}</tbody></table>`:'<p class="small">Belum ada hasil. Selesaikan permainan untuk masuk peringkat.</p>'}
+function renderReport(){let d={};try{d=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}let runs=d.runs||[];let n=runs.length;let correct=runs.reduce((s,r)=>s+(r.correct||0),0),answered=runs.reduce((s,r)=>s+(r.answered||0),0);$('reportSummary').innerHTML=`<p><b>Pemain saat ini:</b> ${escapeHTML(state.name)}</p><p><b>Skor sesi:</b> ${state.score} · <b>Level:</b> ${state.level}/10</p><p><b>Jawaban benar sesi:</b> ${state.correct}/${state.answered}</p><p><b>Rekaman permainan tersimpan:</b> ${n}</p><p><b>Akurasi seluruh rekaman:</b> ${answered?Math.round(correct/answered*100):0}% (${correct}/${answered})</p>`}
+function reportModal(){let d={};try{d=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}let runs=d.runs||[];showModal(`<h2>📊 Laporan Hasil Belajar</h2><p>Nama: <b>${escapeHTML(state.name)}</b></p><p>Skor saat ini: <b>${state.score}</b></p><p>Level tertinggi sesi ini: <b>${state.level}</b></p><p>Jawaban benar: <b>${state.correct} dari ${state.answered}</b></p><p>Riwayat permainan tersimpan: <b>${runs.length}</b></p><p class="small">Data hanya ada pada browser/perangkat ini. Unduh CSV untuk menyimpan salinan atau membukanya di spreadsheet.</p><button id="modalDownload">Unduh CSV</button> <button class="light" id="closeModal">Tutup</button>`);$('modalDownload').onclick=downloadCSV;$('closeModal').onclick=closeModal}
+function downloadCSV(){let d={};try{d=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}let rows=[['Nama','Skor','Level','Jawaban benar','Total dijawab','Tanggal']];(d.runs||[]).forEach(r=>rows.push([r.name,r.score,r.level,r.correct,r.answered,r.date]));rows.push([state.name,state.score,state.level,state.correct,state.answered,new Date().toLocaleString('id-ID')]);let csv=rows.map(r=>r.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');let blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='laporan-petualangan-si-campuran.csv';a.click();URL.revokeObjectURL(url)}
+function changeName(){showModal(`<h2>👥 Nama pemain</h2><label for="playerName">Nama panggilan / tim</label><input id="playerName" class="field" maxlength="24" value="${escapeHTML(state.name)}" placeholder="Contoh: Tim Cerdas"><p class="small">Gunakan nama panggilan, bukan data pribadi sensitif.</p><button id="saveName">Simpan</button> <button class="light" id="closeModal">Batal</button>`);$('saveName').onclick=()=>{let v=$('playerName').value.trim();if(v)state.name=v;closeModal();save();renderReport()};$('closeModal').onclick=closeModal}
+function resetLevel(){state.started=false;setupLevel();$('status').textContent='Level diulang. Tekan Mulai untuk lanjut.';draw();updateUI()}
+function fullReset(){if(!confirm('Hapus seluruh skor dan riwayat yang tersimpan pada browser ini?'))return;localStorage.removeItem(STORE);state={name:'Pemain 1',score:0,level:1,coins:0,lives:3,correct:0,answered:0,played:0,asked:[],started:false,muted:false};setupLevel();updateUI();renderBoard();renderReport()}
+function bindHold(id,prop){let b=$(id);const on=e=>{e.preventDefault();keys[prop]=true};const off=e=>{e.preventDefault();keys[prop]=false};b.addEventListener('pointerdown',on);['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,off))}
+bindHold('leftBtn','left');bindHold('rightBtn','right');$('jumpBtn').addEventListener('pointerdown',e=>{e.preventDefault();if(player.onGround){player.vy=-12;player.onGround=false;tone(360,.05)}})
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp',' '].includes(e.key))e.preventDefault();if(e.key==='ArrowLeft'||e.key==='a')keys.left=true;if(e.key==='ArrowRight'||e.key==='d')keys.right=true;if((e.key==='ArrowUp'||e.key===' '||e.key==='w')&&player.onGround){player.vy=-12;player.onGround=false;tone(360,.05)}});
+window.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key==='a')keys.left=false;if(e.key==='ArrowRight'||e.key==='d')keys.right=false});
+$('startBtn').onclick=()=>{if(!state.started)start();requestAnimationFrame(physics)};
+$('nameBtn').onclick=changeName;$('reportBtn').onclick=reportModal;$('rankBtn').onclick=()=>{renderBoard();showModal(`<h2>🏆 Papan Peringkat</h2>${$('leaderboard').innerHTML}<button class="light" id="closeModal">Tutup</button>`);$('closeModal').onclick=closeModal};
+$('soundBtn').onclick=()=>{state.muted=!state.muted;$('soundBtn').textContent=state.muted?'🔇 Suara: OFF':'🔊 Suara: ON';if(!state.muted)tone(600,.1);save()};
+$('quizBtn').onclick=()=>{if(!state.started)start();openQuiz()};$('resetBtn').onclick=resetLevel;$('downloadBtn').onclick=downloadCSV;$('clearDataBtn').onclick=fullReset;
+setupLevel();load();updateUI();draw();renderBoard();renderReport();
+})();
+</script>
+</body>
+</html>
